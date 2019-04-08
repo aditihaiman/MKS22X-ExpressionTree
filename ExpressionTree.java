@@ -5,8 +5,8 @@ public class ExpressionTree{
   /*return the expression as an infix notation string with parenthesis*/
   /* The sample tree would be: "(3 + (2 * 10))"     */
   public String toString(){
-    if(isValue()) return getValue() + " ";
-    return getOp() + " " + getLeft().toString() + " " + getRight().toString();
+    if(isValue()) return getValue() + "";
+    return "(" + getLeft().toString() + " " + getOp() + " " + getRight().toString() + ")";
   }
 
   /*return the expression as a postfix notation string without parenthesis*/
@@ -20,7 +20,7 @@ public class ExpressionTree{
   /* The sample tree would be: "+ 3 * 2 10"     */
 
   public String toStringPrefix(){
-    if(isValue()) return getValue() + " ";
+    if(isValue()) return getValue() + "";
     return getOp() + " " + getLeft().toStringPrefix() + " " + getRight().toStringPrefix();
   }
 
@@ -98,29 +98,34 @@ public class ExpressionTree{
     System.out.println(c.toStringPostfix());
     System.out.println(c.toStringPrefix());
     System.out.println(c.evaluate());//6.0
+    System.out.println();
 
     ExpressionTree d = new ExpressionTree('*',c,new ExpressionTree(3.5));
     System.out.println(d);
     System.out.println(d.toStringPostfix());
     System.out.println(d.toStringPrefix());
     System.out.println(d.evaluate());//21
+    System.out.println();
 
     ExpressionTree ex = new ExpressionTree('-',d,new ExpressionTree(1.0));
     System.out.println(ex);
     System.out.println(ex.toStringPostfix());
     System.out.println(ex.toStringPrefix());
     System.out.println(ex.evaluate());//20
+    System.out.println();
 
     ex = new ExpressionTree('+',new ExpressionTree(1.0),ex);
     System.out.println(ex);
     System.out.println(ex.toStringPostfix());
     System.out.println(ex.toStringPrefix());
     System.out.println(ex.evaluate());//21
+    System.out.println();
 
     ex = new ExpressionTree('/',ex,new ExpressionTree(2.0));
     System.out.println(ex);
     System.out.println(ex.toStringPostfix());
     System.out.println(ex.toStringPrefix());
     System.out.println(ex.evaluate());//10.5
+    System.out.println();
   }
 }
